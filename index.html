@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>قوانين مقاطعة ستارك</title>
+    <!-- استدعاء مكتبة Font Awesome للحصول على شعارات السوشيال ميديا بشكل احترافي -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             margin: 0;
@@ -23,7 +25,12 @@
             padding-top: 20px;
             border-left: 2px solid #292929;
             box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar-menu {
             overflow-y: auto;
+            flex-grow: 1;
         }
         .sidebar h2 {
             text-align: center;
@@ -33,7 +40,7 @@
             padding: 0 10px;
             line-height: 1.4;
         }
-        .sidebar a {
+        .sidebar a.sidebar-link {
             display: block;
             color: #b3b3b3;
             padding: 12px 20px;
@@ -44,11 +51,40 @@
             border-right: 4px solid transparent;
         }
         /* شكل الخيار عندما يضيء تلقائياً مع الرولّة */
-        .sidebar a.active {
+        .sidebar a.sidebar-link.active {
             background-color: #292929;
             color: #00adb5;
             border-right: 4px solid #00adb5;
         }
+        
+        /* قسم وسائل التواصل أسفل القائمة الجانبية */
+        .sidebar-socials {
+            padding: 20px;
+            border-top: 2px solid #292929;
+            background-color: #1a1a1a;
+            text-align: center;
+        }
+        .sidebar-socials p {
+            margin: 0 0 10px 0;
+            font-size: 12px;
+            color: #b3b3b3;
+            font-weight: bold;
+        }
+        .sidebar-socials .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .sidebar-socials .social-icons a {
+            color: #b3b3b3;
+            font-size: 20px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .sidebar-socials .social-icons a.discord:hover { color: #5865F2; }
+        .sidebar-socials .social-icons a.instagram:hover { color: #E1306C; }
+        .sidebar-socials .social-icons a.youtube:hover { color: #FF0000; }
+
         /* محتوى القوانين على اليسار */
         .content {
             margin-right: 300px;
@@ -114,28 +150,79 @@
             font-style: italic;
             color: #b3b3b3;
         }
+
+        /* قسم روابط التواصل في نهاية المحتوى الرئيسي */
+        .footer-socials {
+            text-align: center;
+            padding: 30px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            margin-top: 40px;
+        }
+        .footer-socials h3 {
+            color: #00adb5;
+            margin-bottom: 20px;
+        }
+        .footer-links-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 6px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s transform, 0.3s box-shadow;
+        }
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .btn-discord { background-color: #5865F2; }
+        .btn-instagram { background-color: #E1306C; }
+        .btn-youtube { background-color: #FF0000; }
     </style>
 </head>
 <body>
 
     <!-- القائمة الجانبية الثابتة على اليمين -->
     <div class="sidebar" id="mySidebar">
-        <h2>قوانين مقاطعة ستارك</h2>
-        <a href="#general" class="sidebar-link active">⚖️ القوانين العامة</a>
-        <a href="#inspection" class="sidebar-link">🛡️ قانون الرقابة والتفتيش</a>
-        <a href="#common-errors" class="sidebar-link">⚠️ أخطاء شائعة بين اللاعبين</a>
-        <a href="#jobs" class="sidebar-link">💼 قوانين الوظائف العامة</a>
-        <a href="#vehicles-types" class="sidebar-link">🚛 أنواع مركبات العمل</a>
-        <a href="#investment" class="sidebar-link">📈 قانون الاستثمار للمتاجر</a>
-        <a href="#crime" class="sidebar-link">🚢 قوانين الإجرام والتهريب</a>
-        <a href="#security-alert" class="sidebar-link">🚨 قوانين الاستنفار الأمني</a>
-        <a href="#prisoner-transport" class="sidebar-link">🚍 قوانين نقل السجناء</a>
-        <a href="#vehicle-impound" class="sidebar-link">🚗 قانون حجز المركبات</a>
-        <a href="#war-field" class="sidebar-link">⚔️ قانون ميدان الحرب</a>
-        <a href="#organizations" class="sidebar-link">🏰 قانون المنظمات</a>
-        <a href="#certified-player" class="sidebar-link">🏅 قوانين اللاعب المعتمد & بلس</a>
-        <a href="#leaders-promotions" class="sidebar-link">👔 القادة والترقيات والانقطاع</a>
-        <a href="#life-death" class="sidebar-link">🩹 قوانين الحياة والموت</a>
+        <div class="sidebar-menu">
+            <h2>قوانين مقاطعة ستارك</h2>
+            <a href="#general" class="sidebar-link active">⚖️ القوانين العامة</a>
+            <a href="#inspection" class="sidebar-link">🛡️ قانون الرقابة والتفتيش</a>
+            <a href="#common-errors" class="sidebar-link">⚠️ أخطاء شائعة بين اللاعبين</a>
+            <a href="#jobs" class="sidebar-link">💼 قوانين الوظائف العامة</a>
+            <a href="#vehicles-types" class="sidebar-link">🚛 أنواع مركبات العمل</a>
+            <a href="#investment" class="sidebar-link">📈 قانون الاستثمار للمتاجر</a>
+            <a href="#crime" class="sidebar-link">🚢 قوانين الإجرام والتهريب</a>
+            <a href="#security-alert" class="sidebar-link">🚨 قوانين الاستنفار الأمني</a>
+            <a href="#prisoner-transport" class="sidebar-link">🚍 قوانين نقل السجناء</a>
+            <a href="#vehicle-impound" class="sidebar-link">🚗 قانون حجز المركبات</a>
+            <a href="#war-field" class="sidebar-link">⚔️ قانون ميدان الحرب</a>
+            <a href="#organizations" class="sidebar-link">🏰 قانون المنظمات</a>
+            <a href="#certified-player" class="sidebar-link">🏅 قوانين اللاعب المعتمد & بلس</a>
+            <a href="#leaders-promotions" class="sidebar-link">👔 القادة والترقيات والانقطاع</a>
+            <a href="#life-death" class="sidebar-link">🩹 قوانين الحياة والموت</a>
+        </div>
+        
+        <!-- الأيقونات المصغرة أسفل القائمة الجانبية -->
+        <div class="sidebar-socials">
+            <p>حساباتنا الرسمية</p>
+            <div class="social-icons">
+                <a href="#" target="_blank" class="discord" title="ديسكورد"><i class="fab fa-discord"></i></a>
+                <a href="#" target="_blank" class="instagram" title="إنستغرام"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" class="youtube" title="يوتيوب"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
     </div>
 
     <!-- محتوى القوانين على اليسار -->
@@ -173,7 +260,7 @@
                 <li><strong>التطبيقات والخدمات الجوالة:</strong> استعمل التطبيقات في الجوال لطلب الخدمات المتاحة بالطريقة الصحيحة وبدون سبام. ويمنع طلب الخدمات بقصد الخطف أو القتل أو السرقة أو بغير الاستفادة من الخدمة, كما يمنع إرسال عبارات خارج التمثيل أو مخاطبة لاعب محدد باسمه عبر الجوال.</li>
                 <li><strong>الاحترام والصلح:</strong> تصالح مع أخوانك اللاعبين والتمس لهم الأعذار إذا أخطأوا ولا تأخذ الأمور بطريقة شخصية. يمنع منعاً باتاً السب أو القذف بالأعراض أو الكلام البذيء والطائفي والسياسي والديني والقبلي، وتصل عقوبتها إلى <strong>الحظر النهائي من السيرفر دون تنبيه</strong>.</li>
                 <li><strong>التواصل خارج التمثيل (OOC):</strong> استعمل عقلك ولا تطلب أدمن أو مشرف على أي سبب، وتذكر وجود 4 وظائف معتمدة تقدم خدمات (شرطة، حرس، دفاع مدني، ميكانيكي). اطلب مساعدة الإدارة في ديسكورد بالروم المخصص لذلك.</li>
-                <li><strong>شروط التهديد والجرائم:</strong> ممنوع القتل بدون سبب أو القتل بمجرد التهديد والعد من 1 إلى 3 (ضروري تتحاور مع اللاعبين). وممنوع الخطف إذا كان عدد الشرطة والحرس قليلاً بالنسبة لإجمالي اللاعبين، كما يمنع الإجرام تماماً في حال عدم وجود شرطة أو حرس بالسيرفر.</li>
+                <li><strong>شروط التهديد والجرائم:</strong> ممنوع القتل بدون سبب أو القتل بمجرد التهديد والعد من 1 إلى 3 (ضروري تتحاور مع اللاعبين). وممنوع الخطف إذا كان عدد الشرطة والحرس قليلاً بالنسبة لإجمالي اللاعبين، كما يمنع الإجرام تماماً in حال عدم وجود شرطة أو حرس بالسيرفر.</li>
                 <li><strong>برامج تغيير الصوت:</strong> ممنوع استعمال برنامج تغيير الصوت إلا في حالة استخدام مكبر صوت الدوريات.</li>
                 <li><strong>تقدير ظروف الموظفين:</strong> يجب مراعاة أن نفس الشخص لا يمكن تواجده عند جميع اللاعبين في نفس الوقت؛ إذا طلبت شرطياً ولم يرد عليك التمس له العذر بأنه مشغول في سيناريو آخر. الشرطي والحارس والمسعف لا يستلمون راتباً حقيقياً ليلعبوا معك وهم بشر يعيشون حياة حقيقية، فقدر ذلك.</li>
                 <li><strong>سرقة المركبات الحكومية:</strong> ممنوع سرقة مركبات الطوارئ والدوريات والمخصصة للوظائف المعتمدة والفعاليات والمزاد.</li>
@@ -239,7 +326,7 @@
             <ul>
                 <li><strong>الدور والعدالة:</strong> الرقابة والتفتيش دور حيوي لضمان النظام والعدالة في مقاطعة ستارك. تُعدّ إدارة الرقابة والتفتيش فريقاً إدارياً متميزاً يضم لاعبين ذوي خبرة ومعرفة شاملة بقوانين السيرفر.</li>
                 <li><strong>نطاق العمل:</strong> يُعنى هذا الفريق بمتابعة أداء الوظائف العامة والمعتمدة، وتنظيم وتوجيه سير العمل داخل السيرفر، بالإضافة إلى رصد المخالفات وتحريرها بحق كل من ينتهك النظام العام، بغض النظر عن موقعه أو دوره في المقاطعة. وتُعتبر هذه الإدارة السلطة العليا في المقاطعة، حيث تضمن الحفاظ على بيئة عادلة ومنظمة للجميع.</li>
-                <li><strong>احترام دور المراقب:</strong> واجب على الجميع؛ لا يُسمح لأي شخص بالتفاعل مع المراقب مباشرة دون حاجة مبررة. وفي حال طلب المراقب أو المفتش منك التوقف أو إبراز الهوية، فإن الامتثال لهذا الطلب واجب وغير قابل للتفاوض.</li>
+                <li><strong>احترام دور المراقب:</strong> واجب على الجميع؛ لا يُسمح لأي شخص بالتفاعل مع المراقب مباشرة دون حاجة مبررة. وفي حال طلب المراقب أو المفتش منك التوقف أو إبراز الهوية, فإن الامتثال لهذا الطلب واجب وغير قابل للتفاوض.</li>
                 <li><strong>عقوبات التعدي والهروب:</strong> الهروب، الاعتداء، أو رفض التعليمات يُعتبر انتهاكاً صريحاً للقوانين، حيث تُعدّ تعليمات المراقب إلزامية بمجرد دخولك إلى السيرفر. أي محاولات للهروب أو التعدي على المراقب قد تؤدي إلى فرض عقوبة صارمة تصل إلى <strong>الحظر الدائم (البان النهائي) من السيرفر</strong>. الهدف من هذه الإجراءات هو الحفاظ على نظام متوازن يُتيح لجميع اللاعبين الاستمتاع بتجرفة لعب مثالية في بيئة يسودها الاحترام والالتزام.</li>
             </ul>
 
@@ -654,7 +741,7 @@
             <ul>
                 <li>1. إذا كان التوظيف لأول مرة في وظيفة جديدة، يجب اتباع الإجراءات العادية للتقديم والتدرج في الترقيات العسكرية، حسب التنظيم الداخلي لكل وظيفة وتبدأ رتبتك من **رتبة (متدرب)**.</li>
                 <li>2. يمنع منعاً باتاً استغلال ميزة تغيير الوظيفة للتهرب من قوانين وأنظمة الوظيفة نفسها، أو للهروب من عقوبة إدارية أو عسكرية صدرت بحقك أثناء تواجدك بالخدمة.</li>
-                <li>3. يمنع تغيير الوظيفة في حالة وجود نقص حاد بعدد الموظفين المتصلين حالياً بالسيرفر في وظيفتك الحالية، ويجب تقدير المصلحة العامة والعدد الإجمالي للوظائف المعتمدة قبل التحويل.</li>
+                <li>3. يمنع تغيير الوظيفة في حالة وجود نقص حاد بعدد الموظفين المتصلين حالياً بالسيرفر في وظيفك الحالية، وييجيب تقدير المصلحة العامة والعدد الإجمالي للوظائف المعتمدة قبل التحويل.</li>
                 <li>4. يجب أخذ الموافجة الرسمية والصريحة من قائد الوظيفة أو من ينوب عنه قبل الخروج من الوظيفة المعتمدة، وكتابة القرار بشكل واضح وصريح في الروم المخصص لذلك في الديسكورد.</li>
                 <li>5. بعد صدور اعتمادك، سيظهر لك خيار "الوظيفة المعتمدة الجديدة" تلقائياً داخل مركز التوظيف لتتمكن من التحويل برمجياً.</li>
                 <li>6. **حظر الأسلحة المزدوجة:** لا يحق للاعب المعتمد حمل أو استعمال أسلحة ومعدات لا تخص الوظيفة الحالية التي يسجل بها الدوام (Duty)، ويجب عليه إجبارياً تخزين العهدة بالكامل في مركبة الوظيفة قبل التغيير لوظيفة أخرى أو أخذ إجازة.</li>
@@ -756,6 +843,25 @@
                 <li>• <strong>إصابة رجال الأمن:</strong> إذا كان رجل الأمن المصاب يتواجد داخل نطاق استنفار أمني نشط أو نداء استغاثة فعال.</li>
                 <li>• <strong>دروع الأسلحة الثقيلة:</strong> إذا كانت الإصابة ناجمة عن طلق ناري من سلاح ثقيل وكان المصاب يرتدي سترة واقية ضد الرصاص تفادت الضرر المباشر.</li>
             </ul>
+        </div>
+
+        <!-- القسم الجديد: أزرار وحقول روابط التواصل في نهاية الصفحة -->
+        <div class="footer-socials">
+            <h3>انضم إلى مجتمعاتنا الرسمية</h3>
+            <div class="footer-links-container">
+                <!-- استبدل # برابط السيرفر الخاص بك -->
+                <a href="#" target="_blank" class="social-btn btn-discord">
+                    <i class="https://discord.gg/CMBQ7gXXVE"></i> سيرفر الديسكورد
+                </a>
+                <!-- استبدل # برابط الانستغرام الخاص بك -->
+                <a href="#" target="_blank" class="social-btn btn-instagram">
+                    <i class="fab fa-instagram"></i> حساب الإنستغرام
+                </a>
+                <!-- استبدل # برابط اليوتيوب الخاص بك -->
+                <a href="#" target="_blank" class="social-btn btn-youtube">
+                    <i class="fab fa-youtube"></i> قناة اليوتيوب
+                </a>
+            </div>
         </div>
 
     </div>
